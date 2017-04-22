@@ -11,4 +11,7 @@
     <string name="quiz">QUIZ</string>
     <string name="leader_board">LEADER BOARD</string>
     <string name="loguot">LOGUOT</string>
+    <string name="level">level</string>
+    <string name="exp">exp</string>
+    <string name="nick">nick</string>
 </resources>
