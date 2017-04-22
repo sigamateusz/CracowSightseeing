@@ -76,7 +76,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                                 Integer score = (Integer) response.getInt("score");
 
                                 ApplicationController.user = new User(name, level, score);
-                                startActivity(new Intent("MapsActivity"));
+                                startActivity(new Intent("Menu"));
 
                             } else {
                                 Log.i("Response: ", "False");

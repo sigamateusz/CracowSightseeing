@@ -41,7 +41,6 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps">
             <intent-filter>
-                <!--<action android:name="android.intent.action.MAIN" />-->
                 <action android:name="MapsActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -51,12 +50,17 @@
             android:name="MainActivity"
             android:label="@string/title_main_activity">
             <intent-filter>
-                <!--<action android:name="com.example.cj.cracowsightseeing" />-->
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
-                <!--<category android:name="android.intent.category.DEFAULT" />-->
+        <activity
+            android:name=".Menu"
+            android:label="@string/title_menu">
+            <intent-filter>
+                <action android:name="Menu" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>

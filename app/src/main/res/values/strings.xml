@@ -2,7 +2,13 @@
     <string name="app_name">CracowSightseeing</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_main_activity">Main Activity</string>
+    <string name="title_menu">Menu</string>
     <string name="button">Send</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="map">MAP</string>
+    <string name="add_location">ADD LOCATION</string>
+    <string name="quiz">QUIZ</string>
+    <string name="leader_board">LEADER BOARD</string>
+    <string name="loguot">LOGUOT</string>
 </resources>
