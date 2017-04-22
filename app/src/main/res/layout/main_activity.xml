@@ -1,12 +1,42 @@
-<LinearLayout android:layout_width="match_parent"
+<RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal">
 
     <Button
         android:id="@+id/button"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="@string/button"
+        android:layout_marginBottom="146dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/password"
         android:layout_width="wrap_content"
-        android:layout_height="304dp"
-        android:layout_weight="1"
-        android:text="Button" />
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="@string/password"
+        />
+
+    <EditText
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/password"
+        android:layout_alignLeft="@+id/password"
+        android:layout_alignStart="@+id/password"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/login"
+        />
+
+
+</RelativeLayout>
 
