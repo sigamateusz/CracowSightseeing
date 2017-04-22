@@ -11,6 +11,8 @@ import com.android.volley.toolbox.Volley;
 
 public class ApplicationController extends Application {
 
+    public static User user;
+
     /**
      * Log or request TAG
      */

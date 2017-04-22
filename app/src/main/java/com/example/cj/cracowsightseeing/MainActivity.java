@@ -1,6 +1,7 @@
 package com.example.cj.cracowsightseeing;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -40,8 +41,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         String out_login = login.getText().toString();
         String out_password = password.getText().toString();
 
-//        Log.i("Login: ", out_login);
-//        Log.i("Pass: ", out_password);
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("login", out_login);
@@ -50,9 +49,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
             e.printStackTrace();
         }
         makeJsonObjReq(jsonObject);
-        Toast.makeText(this, "Wrong login or password",
-                Toast.LENGTH_SHORT).show();
-//        startActivity(new Intent("MapsActivity"));
     }
 
     public void onClick(View v) {
@@ -71,10 +67,20 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
+                            Log.i("Status: ", response.getBoolean("status") ? "True" : "False");
                             if (response.getBoolean("status")) {
                                 Log.i("Response: ", response.toString());
+
+                                String name = response.getString("login");
+                                Integer level = (Integer) response.getInt("level");
+                                Integer score = (Integer) response.getInt("score");
+
+                                ApplicationController.user = new User(name, level, score);
+                                startActivity(new Intent("MapsActivity"));
+
                             } else {
                                 Log.i("Response: ", "False");
+                                Toast.makeText(MainActivity.this, "Wrong login or password", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -85,6 +91,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i("Error: ", error.getMessage());
+
+                //todo : Error template
+                //        startActivity(new Intent("MapsActivity"));
+
             }
         }) {
 
