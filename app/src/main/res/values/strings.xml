@@ -3,6 +3,7 @@
     <string name="title_activity_maps">Map</string>
     <string name="title_main_activity">Main Activity</string>
     <string name="title_menu">Menu</string>
+    <string name="title_beacon">Add quiz</string>
     <string name="button">Send</string>
     <string name="password">Password</string>
     <string name="login">Login</string>

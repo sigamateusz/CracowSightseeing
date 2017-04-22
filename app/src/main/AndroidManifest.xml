@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.cj.cracowsightseeing">
 
     <!--
@@ -12,10 +13,12 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
-    <service android:name="com.kontakt.sdk.android.ble.service.ProximityService" android:exported="false"/>
+    <!--<service android:name="com.kontakt.sdk.android.ble.service.ProximityService" android:exported="false"/>-->
 
     <application
+
         android:name=".ApplicationController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,7 +26,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:fullBackupContent="@xml/backup_descriptor">
+        android:fullBackupContent="@xml/backup_descriptor"
+        tools:ignore="GoogleAppIndexingWarning">
+        <service android:name="com.kontakt.sdk.android.ble.service.ProximityService" android:exported="false"/>
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -67,6 +72,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".Beacon"
+            android:label="@string/title_beacon">
+            <intent-filter>
+                <action android:name="Beacon" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

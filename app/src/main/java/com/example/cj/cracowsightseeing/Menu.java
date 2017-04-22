@@ -57,6 +57,7 @@ public class Menu extends Activity implements View.OnClickListener {
             case R.id.quiz:
                 break;
             case R.id.beacon:
+                startActivity(new Intent("Beacon"));
                 break;
             case R.id.logout:
                 break;
