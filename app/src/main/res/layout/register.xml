@@ -1,0 +1,51 @@
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/registerBt"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="@string/button"
+        android:layout_marginTop="34dp"
+        android:layout_below="@+id/password_copy"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/password_copy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="@string/password"
+        android:layout_below="@+id/password_first"
+        android:layout_alignLeft="@+id/password_first"
+        android:layout_alignStart="@+id/password_first" />
+
+    <EditText
+        android:id="@+id/password_first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/login_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/password_first"
+        android:layout_alignLeft="@+id/password_first"
+        android:layout_alignStart="@+id/password_first"
+        android:ems="10"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="@string/login"
+        android:inputType="textPersonName" />
+
+
+</RelativeLayout>
+

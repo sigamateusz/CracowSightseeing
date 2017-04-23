@@ -25,25 +25,24 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class Register extends Activity implements View.OnClickListener {
     Button button;
-    Button button_register;
     private EditText login;
     private EditText password;
-    String server_url = "http://192.170.21.107:5000/android/login";
+    private EditText password_copy;
+    String server_url = "http://192.170.21.107:5000/android/register";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity);
-        button = (Button) findViewById(R.id.button);
-        button_register = (Button) findViewById(R.id.go_to_register);
-        login = (EditText) findViewById(R.id.login);
-        password = (EditText) findViewById(R.id.password);
+        setContentView(R.layout.register);
+        button = (Button) findViewById(R.id.registerBt);
+        login = (EditText) findViewById(R.id.login_register);
+        password = (EditText) findViewById(R.id.password_first);
+        password_copy = (EditText) findViewById(R.id.password_copy);
 
         button.setOnClickListener(this);
-        button_register.setOnClickListener(this);
-        checkPermissionAndStart();
+//        checkPermissionAndStart();
 //        Beacon.checkPermissionAndStart();
     }
 
@@ -63,16 +62,23 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button:
-                buttonClick();
-                break;
-            case R.id.go_to_register:
-                startActivity(new Intent("Register"));
+            case R.id.registerBt:
+                if (isCorrectPassword()) {
+                    buttonClick();
+                } else {
+                    Toast.makeText(this, "Passwords must be the same", Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }
 
+    boolean isCorrectPassword(){
+        return password.getText().toString().equals(password_copy.getText().toString());
+    }
+
     private void makeJsonObjReq(JSONObject jsonObject) {
+
+
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
                 server_url, jsonObject,
                 new Response.Listener<JSONObject>() {
@@ -80,20 +86,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            Log.i("Status: ", response.getBoolean("status") ? "True" : "False");
                             if (response.getBoolean("status")) {
-//                                Log.i("Response: ", response.toString());
-
-                                String name = response.getString("login");
-                                Integer level = (Integer) response.getInt("level");
-                                Integer score = (Integer) response.getInt("score");
-
-                                ApplicationController.user = new User(name, level, score);
-                                startActivity(new Intent("Menu"));
-
+                                Log.i("response", response.toString());
+                                Intent intent = new Intent(Register.this, MainActivity.class);
+                                startActivity(intent);
                             } else {
-                                Log.i("Response: ", "False");
-                                Toast.makeText(MainActivity.this, "Wrong login or password", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Register.this, "Wrong name or password", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

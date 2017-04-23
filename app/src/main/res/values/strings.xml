@@ -6,6 +6,7 @@
     <string name="title_beacon">Add quiz</string>
     <string name="title_quiz">Quiz</string>
     <string name="title_leader_board">Leader Board</string>
+    <string name="title_register">Register</string>
     <string name="button">Send</string>
     <string name="password">Password</string>
     <string name="login">Login</string>

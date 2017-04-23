@@ -7,10 +7,10 @@
         android:id="@+id/button"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:text="@string/button"
-        android:layout_marginBottom="146dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="146dp"
+        android:text="Login" />
 
     <EditText
         android:id="@+id/password"
@@ -36,6 +36,15 @@
         android:inputType="textPersonName"
         android:hint="@string/login"
         />
+
+    <Button
+        android:id="@+id/go_to_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="46dp"
+        android:text="@string/title_register" />
 
 
 </RelativeLayout>
