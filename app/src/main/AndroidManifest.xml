@@ -91,6 +91,15 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".LeaderBoard"
+            android:label="@string/title_leader_board">
+            <intent-filter>
+                <action android:name="LeaderBoard" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

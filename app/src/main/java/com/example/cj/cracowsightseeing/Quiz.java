@@ -113,8 +113,6 @@ public class Quiz extends Activity implements View.OnClickListener{
                     @Override
                     public void onResponse(JSONObject response) {
                         JSONObject jsonObject1 = response;
-                        Log.i("respon", jsonObject1.toString());
-                        Log.i("DUPA", "DUPA");
                         questions = response ;
                     }
                 }, new Response.ErrorListener() {

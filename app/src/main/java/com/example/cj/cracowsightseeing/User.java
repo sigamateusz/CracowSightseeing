@@ -11,6 +11,10 @@ public class User {
         this.level = level;
     }
 
+    public User() {
+
+    }
+
     public void setLevel(Integer level) {
         this.level = level;
     }
