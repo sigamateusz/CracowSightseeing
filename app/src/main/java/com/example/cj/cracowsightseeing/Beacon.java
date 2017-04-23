@@ -1,51 +1,54 @@
 package com.example.cj.cracowsightseeing;
 
-import android.Manifest;
-//import android.app.Activity;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.kontakt.sdk.android.ble.connection.OnServiceReadyListener;
 import com.kontakt.sdk.android.ble.manager.ProximityManager;
 import com.kontakt.sdk.android.ble.manager.ProximityManagerFactory;
-import com.kontakt.sdk.android.ble.manager.listeners.EddystoneListener;
 import com.kontakt.sdk.android.ble.manager.listeners.IBeaconListener;
-import com.kontakt.sdk.android.ble.manager.listeners.simple.SimpleEddystoneListener;
 import com.kontakt.sdk.android.ble.manager.listeners.simple.SimpleIBeaconListener;
 
 import com.kontakt.sdk.android.common.KontaktSDK;
 import com.kontakt.sdk.android.common.profile.IBeaconDevice;
 import com.kontakt.sdk.android.common.profile.IBeaconRegion;
-import com.kontakt.sdk.android.common.profile.IEddystoneDevice;
-import com.kontakt.sdk.android.common.profile.IEddystoneNamespace;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Beacon extends AppCompatActivity{
 
+    private static List<Integer> beaconsList = new ArrayList();
     private ProximityManager proximityManager;
+    String server_url = "http://192.170.21.107:5000/android/beacon";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.beacon);
-//        checkPermissionAndStart();
-//        int permissionCheck = ContextCompat.checkSelfPermission(this,
-//                Manifest.permission.ACCESS_COARSE_LOCATION);
+
         KontaktSDK.initialize("HrIntLkGdnKSpkrrSJZpesIMXcOkUTht");
 
         proximityManager = ProximityManagerFactory.create(this);
         proximityManager.setIBeaconListener(createIBeaconListener());
-        proximityManager.setEddystoneListener(createEddystoneListener());
+//        proximityManager.setEddystoneListener(createEddystoneListener());
 
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-//        checkPermissionAndStart();
         startScanning();
     }
 
@@ -75,33 +78,69 @@ public class Beacon extends AppCompatActivity{
         return new SimpleIBeaconListener() {
             @Override
             public void onIBeaconDiscovered(IBeaconDevice ibeacon, IBeaconRegion region) {
-                Log.i("Sample", "IBeacon discovered: " + ibeacon.toString());
+                Integer major = ibeacon.getMajor();
+                if (!beaconsList.contains(major)) {
+                    JSONObject jsonObject = new JSONObject();
+                    try {
+                        jsonObject.put("major", major);
+                        makeJsonObjReq(jsonObject);
+                        beaconsList.add(major);
+                        Log.i("Lista beaconow", beaconsList.toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         };
     }
 
-    private EddystoneListener createEddystoneListener() {
-        return new SimpleEddystoneListener() {
-            @Override
-            public void onEddystoneDiscovered(IEddystoneDevice eddystone, IEddystoneNamespace namespace) {
-                Log.i("Sample", "Eddystone discovered: " + eddystone.toString());
-            }
-        };
-    }
+    private void makeJsonObjReq(JSONObject jsonObject) {
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
+            server_url, jsonObject,
+            new Response.Listener<JSONObject>() {
 
-//    public void checkPermissionAndStart() {
-//        int checkSelfPermissionResult = ContextCompat.checkSelfPermission(Beacon.this, Manifest.permission.ACCESS_COARSE_LOCATION);
-////        ContextCompat.checkSelfPermission(Beacon.this, Manifest.permission.BLUETOOTH);
-//
-//        if (PackageManager.PERMISSION_GRANTED == checkSelfPermissionResult) {
-//            Log.i("checkPermission: ", "zaakceptowane");
-//            //already granted
-////            startScanning();
-//        } else {
-//            //request permission
-//            Log.i("checkPermission:", "niezaakpcetowane");
-//            ActivityCompat.requestPermissions(Beacon.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
-//
-//        }
-//    }
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        Log.i("Status: ", response.getBoolean("status") ? "True" : "False");
+//                        Log.i("Status: ", response.toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+
+        @Override
+        public void onErrorResponse(VolleyError error) {
+            Log.i("Error: ", error.getMessage());
+
+            //todo : Error template
+            //        startActivity(new Intent("MapsActivity"));
+
+        }
+    }) {
+
+        /**
+         * Passing some request headers
+         * */
+        @Override
+        public Map<String, String> getHeaders() throws AuthFailureError {
+            HashMap<String, String> headers = new HashMap<String, String>();
+            headers.put("Content-Type", "application/json; charset=utf-8");
+            return headers;
+        }
+
+        @Override
+        protected Map<String, String> getParams() {
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("un", "xyz@gmail.com");
+            params.put("p", "somepasswordhere");
+            return params;
+        }
+
+    };
+
+    ApplicationController.getInstance().addToRequestQueue(jsonObjReq);
+}
+
 }

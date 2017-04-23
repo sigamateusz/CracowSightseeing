@@ -1,6 +1,5 @@
 package com.example.cj.cracowsightseeing;
 
-
 import android.app.Application;
 import android.text.TextUtils;
 

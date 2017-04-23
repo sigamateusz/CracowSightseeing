@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class Menu extends Activity implements View.OnClickListener {
+
     Button mapBt;
     Button beacon;
     Button leaderboard;

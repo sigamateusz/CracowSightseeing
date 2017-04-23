@@ -124,7 +124,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         };
 
-        String isNull = ApplicationController.getInstance() == null ? " jest nulem" : "jest ok";
+        String isNull = ApplicationController.getInstance() == null ? " jest nullem" : "jest ok";
         Log.d("aa", "makeJsonObjReq: " + isNull);
         ApplicationController.getInstance().addToRequestQueue(jsonObjReq);
     }
