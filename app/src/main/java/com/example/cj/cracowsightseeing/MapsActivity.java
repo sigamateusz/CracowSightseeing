@@ -11,6 +11,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -42,6 +43,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        Log.i("dlugosc" , Integer.toString(locations.length()));
+
+        for (int i=0; i<locations.length(); i++) {
+            try {
+                JSONObject newJson = locations.getJSONObject("location" + Integer.toString(i+1));
+                LatLng newPlace = new LatLng(newJson.getDouble("y"), newJson.getDouble("x"));
+                mMap.addMarker(new MarkerOptions().position(newPlace).title(newJson.getString("name")));
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+//        while (locations.keys().hasNext()) {
+//            Log.i("klucze", locations.keys().next());
+//        }
 
         // Add a marker in Cracow and move the camera
         LatLng cracow = new LatLng(50.049327, 19.961606);
