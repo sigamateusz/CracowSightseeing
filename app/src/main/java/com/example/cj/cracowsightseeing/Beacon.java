@@ -3,6 +3,8 @@ package com.example.cj.cracowsightseeing;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ImageSwitcher;
+import android.widget.ImageView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -29,6 +31,7 @@ import java.util.Map;
 
 public class Beacon extends AppCompatActivity{
 
+    ImageView ball;
     private static List<Integer> beaconsList = new ArrayList();
     private ProximityManager proximityManager;
     String server_url = "http://192.170.21.107:5000/android/beacon";
@@ -37,7 +40,7 @@ public class Beacon extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.beacon);
-
+        ball = (ImageView) findViewById(R.id.ball);
         KontaktSDK.initialize("HrIntLkGdnKSpkrrSJZpesIMXcOkUTht");
 
         proximityManager = ProximityManagerFactory.create(this);
@@ -103,6 +106,11 @@ public class Beacon extends AppCompatActivity{
                 public void onResponse(JSONObject response) {
                     try {
                         Log.i("Status: ", response.getBoolean("status") ? "True" : "False");
+                        if (response.getBoolean("status")) {
+                            ball.setImageResource(R.drawable.quiz);
+                        } else {
+                            ball.setImageResource(R.drawable.looking);
+                        }
 //                        Log.i("Status: ", response.toString());
                     } catch (JSONException e) {
                         e.printStackTrace();
