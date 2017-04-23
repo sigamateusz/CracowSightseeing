@@ -4,6 +4,7 @@
     <string name="title_main_activity">Main Activity</string>
     <string name="title_menu">Menu</string>
     <string name="title_beacon">Add quiz</string>
+    <string name="title_quiz">Quiz</string>
     <string name="button">Send</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
@@ -15,4 +16,9 @@
     <string name="level">level</string>
     <string name="exp">exp</string>
     <string name="nick">nick</string>
+    <string name="question">TextView</string>
+    <string name="ans4">4</string>
+    <string name="ans3">3</string>
+    <string name="ans2">2</string>
+    <string name="ans1">1</string>
 </resources>

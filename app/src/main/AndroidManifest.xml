@@ -82,6 +82,15 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".Quiz"
+            android:label="@string/title_quiz">
+            <intent-filter>
+                <action android:name="Quiz" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

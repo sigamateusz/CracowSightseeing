@@ -75,7 +75,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                         try {
                             Log.i("Status: ", response.getBoolean("status") ? "True" : "False");
                             if (response.getBoolean("status")) {
-                                Log.i("Response: ", response.toString());
+//                                Log.i("Response: ", response.toString());
 
                                 String name = response.getString("login");
                                 Integer level = (Integer) response.getInt("level");
