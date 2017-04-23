@@ -42,29 +42,32 @@
 
     <TextView
         android:id="@+id/playerLevel"
-        android:layout_width="wrap_content"
+        android:layout_width="150sp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="36dp"
-        android:text="@string/level" />
+        android:text="@string/level"
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/experience"
-        android:layout_width="wrap_content"
+        android:layout_width="150sp"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/playerLevel"
         android:layout_alignRight="@+id/playerLevel"
         android:layout_below="@+id/playerLevel"
-        android:text="@string/exp" />
+        android:text="@string/exp"
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/nick"
-        android:layout_width="wrap_content"
+        android:layout_width="150sp"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/experience"
         android:layout_alignRight="@+id/experience"
         android:layout_below="@+id/experience"
-        android:text="@string/nick" />
+        android:text="@string/nick"
+        android:textSize="24sp" />
 
 </RelativeLayout>

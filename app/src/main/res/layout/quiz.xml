@@ -44,5 +44,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="89dp"
-        android:text="@string/question" />
+        android:text="@string/question"
+        android:textSize="36sp" />
 </RelativeLayout>

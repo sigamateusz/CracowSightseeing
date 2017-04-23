@@ -45,20 +45,12 @@ public class Quiz extends Activity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quiz);
-//        JSONObject questions = new JSONObject();
+
         ans1 = (Button) findViewById(R.id.ans1);
         ans2 = (Button) findViewById(R.id.ans2);
         ans3 = (Button) findViewById(R.id.ans3);
         ans4 = (Button) findViewById(R.id.ans4);
         question = (TextView) findViewById(R.id.question);
-//        JSONObject jsonObject = new JSONObject();
-//        try {
-//            jsonObject.put("major", Beacon.beaconsList.get(Beacon.beaconsList.size() - 1));
-//            makeJsonObjReq(jsonObject);
-////            Beacon.beaconsList.remove(Beacon.beaconsList.size() - 1);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
 
         ans1.setOnClickListener(this);
         ans2.setOnClickListener(this);
@@ -154,8 +146,6 @@ public class Quiz extends Activity implements View.OnClickListener{
 
     void showQuestion() {
         try {
-            Log.i("questions", questions.toString());
-            Log.i("JESTEM", "TU KURWA");
             JSONObject newQuestion = questions.getJSONObject("question" + Integer.toString(questionNumber));
             ans1.setText(newQuestion.getString("answer1"));
             ans2.setText(newQuestion.getString("answer2"));
@@ -176,9 +166,17 @@ public class Quiz extends Activity implements View.OnClickListener{
                     public void onResponse(JSONObject response) {
                         try {
                             if (response.getBoolean("status")) {
+                                Toast.makeText(Quiz.this, "You score: " + Integer.toString(score) +
+                                                " points", Toast.LENGTH_SHORT).show();
+
                                 score = 0;
                                 questionNumber = 1;
-//                                questions = null;
+
+                                Integer level = (Integer) response.getInt("level");
+                                Integer totalScore = (Integer) response.getInt("score");
+                                ApplicationController.user.setLevel(level);
+                                ApplicationController.user.setScore(totalScore);
+
                                 startActivity(new Intent("Menu"));
                             }
                         } catch (JSONException e) {

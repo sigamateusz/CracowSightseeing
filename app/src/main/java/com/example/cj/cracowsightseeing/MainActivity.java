@@ -44,7 +44,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         button.setOnClickListener(this);
         button_register.setOnClickListener(this);
         checkPermissionAndStart();
-//        Beacon.checkPermissionAndStart();
     }
 
     private void buttonClick() {

@@ -10,7 +10,9 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="142dp"
-        android:text="person1" />
+        android:text="person1"
+        android:textAlignment="center"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/person2"
@@ -18,7 +20,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/person1"
         android:layout_centerHorizontal="true"
-        android:text="person2" />
+        android:text="person2"
+        android:textAlignment="center"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/person3"
@@ -27,16 +31,20 @@
         android:layout_alignLeft="@+id/person2"
         android:layout_alignStart="@+id/person2"
         android:layout_below="@+id/person2"
-        android:text="person3" />
+        android:text="person3"
+        android:textAlignment="center"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/person4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="person4"
-        android:layout_below="@+id/person3"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/person3"
+        android:text="person4"
+        android:textAlignment="center"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/person5"
@@ -44,7 +52,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/person4"
         android:layout_centerHorizontal="true"
-        android:text="person5" />
+        android:text="person5"
+        android:textAlignment="center"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/person6"
@@ -52,7 +62,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/person5"
         android:layout_centerHorizontal="true"
-        android:text="person6" />
+        android:text="person6"
+        android:textAlignment="center"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/person7"
@@ -60,7 +72,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/person6"
         android:layout_centerHorizontal="true"
-        android:text="person7" />
+        android:text="person7"
+        android:textAlignment="center"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/person8"
@@ -69,7 +83,9 @@
         android:layout_alignEnd="@+id/person7"
         android:layout_alignRight="@+id/person7"
         android:layout_below="@+id/person7"
-        android:text="person8" />
+        android:text="person8"
+        android:textAlignment="center"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/person9"
@@ -77,7 +93,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/person8"
         android:layout_centerHorizontal="true"
-        android:text="person9" />
+        android:text="person9"
+        android:textAlignment="center"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/person10"
@@ -86,14 +104,16 @@
         android:layout_alignLeft="@+id/person9"
         android:layout_alignStart="@+id/person9"
         android:layout_below="@+id/person9"
-        android:text="person10" />
+        android:text="person10"
+        android:textAlignment="center"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/textView48"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Top 10"
-        android:textSize="24sp"
+        android:textSize="36sp"
         android:layout_below="@+id/textView49"
         android:layout_centerHorizontal="true" />
 
@@ -101,9 +121,9 @@
         android:id="@+id/textView49"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="29dp"
         android:text="Leader Board"
-        android:textSize="24sp" />
+        android:textSize="36sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

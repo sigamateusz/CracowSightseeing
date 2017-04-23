@@ -47,9 +47,10 @@ public class Menu extends Activity implements View.OnClickListener {
         nick = (TextView) findViewById(R.id.nick);
 
         Log.i("Name: ", ApplicationController.user.getName());
-        playerLevel.setText(Integer.toString(ApplicationController.user.getLevel()));
-        experience.setText(Integer.toString(ApplicationController.user.getScore()));
-        nick.setText(ApplicationController.user.getName());
+        playerLevel.setText("LEVEL: " + Integer.toString(ApplicationController.user.getLevel()));
+        experience.setText("SCORE: " + Integer.toString(ApplicationController.user.getScore()) + "/" +
+                Integer.toString(10*((ApplicationController.user.getScore()/10) + 1)));
+        nick.setText("NICK: " + ApplicationController.user.getName());
 
         mapBt = (Button) findViewById(R.id.mapBt);
         beacon = (Button) findViewById(R.id.beacon);
@@ -82,8 +83,8 @@ public class Menu extends Activity implements View.OnClickListener {
                 break;
             case R.id.logout:
                 ApplicationController.user = new User();
-                System.exit(0);
-//                startActivity(new Intent("MainActivity"));
+                Intent intent = new Intent(Menu.this, MainActivity.class);
+                startActivity(intent);
                 break;
         }
     }
